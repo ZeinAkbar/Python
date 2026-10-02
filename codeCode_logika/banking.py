@@ -5,35 +5,89 @@ if (username == "zen" and password == "123"):
 
     saldo = 500000 
 
+    print()
     print("Login Berhasil")
-    print("-----RPL MOBILE BANKING-----")
-    print("Saldo anda : " + str(saldo))
-    print("1. Tarik tunai")
-    print("2. Transfer")
-    print("3. Top Up")
+    print("===== RPL MOBILE BANKING =====")
+    print("Saldo anda : Rp" + str(saldo))
 
-    transaksi = str(input("Pilih Transaksi : "))
+    while True:
 
-    match transaksi :
-            case "1" :
-                tarik_saldo = int(input("Masukan Nominal : "))
-                hasil = saldo - tarik_saldo
-                print("Penarikan berhasil")
-                print("anda menarik saldo : " + str(tarik_saldo) + " dari bank")
-                print("sisa saldo anda : " + str(hasil))
-            case "2" :
-                jumlah_transfer = int(input("Masukan Nominal : "))
-                hasil = saldo - jumlah_transfer
-                print("Penarikan berhasil")
-                print("anda men transfer : " + str(jumlah_transfer) + " dari bank")
-                print("sisa saldo anda : " + str(hasil))
-            case "3" :
-                jumlah_topup = int(input("Masukan Nominal : "))
-                hasil = saldo - jumlah_topup
-                print("Penarikan berhasil")
-                print("anda Top Up : " + str(jumlah_topup) + " dari bank")
-                print("sisa saldo anda : " + str(hasil))
+        print()
+        print("==== Menu Utama ====")
+        print("1. Tarik Tunai")
+        print("2. Transfer")
+        print("3. Top Up")
+        print("4. Cek Saldo")
+        print("5. Keluar")
 
-else :
-    print("Login gagal")
+        transaksi = str(input("Pilih Transaksi: "))
 
+        match transaksi:
+
+            case "1":
+                print()
+                print("==== Tarik Tunai ====")
+
+                tarik_saldo = int(input("Masukkan Nominal : "))
+                
+                if tarik_saldo <= saldo:
+                    saldo = saldo - tarik_saldo
+
+                    print("Penarikan Berhasil")
+                    print("Anda Menarik : Rp" + str(tarik_saldo))
+                    print("Sisa Saldo Anda : Rp" + str(saldo))
+
+                else:
+                    print("Saldo Tidak Mencukupi!")
+
+            case "2":
+                print()
+                print("==== Transfer ====")
+
+                nama_tujuan = str(input("Nama Penerima : "))
+                jumlah_transfer = int(input("Jumlah Transfer : "))
+
+                if jumlah_transfer <= saldo:
+                    saldo = saldo - jumlah_transfer
+
+                    print("Transfer Berhasil")
+                    print("Anda Mentransfer : Rp" + str(jumlah_transfer))
+                    print("Sisa Saldo Anda : Rp" + str(saldo))
+
+                else:
+                    print("Saldo Tidak Mencukupi!")
+
+            case "3":
+                print()
+                print("==== Top Up ====")
+
+                jumlah_topUp = int(input("Masukkan Nominal : "))
+                saldo = saldo + jumlah_topUp
+
+                print("Top Up berhasil")
+                print("Jumlah Top Up : Rp" + str(jumlah_topUp))
+                print("Saldo sekarang : Rp" + str(saldo))
+
+            case "4":
+                print()
+                print("==== Cek Saldo ====")
+                print("Saldo Anda : " + str(saldo))
+
+            case "5":
+                print()
+                print("Terima kasih telah menggunakan")
+                print("RPL Mobile Banking")
+                break
+
+            case _:
+                print()
+                print("Pilihan tidak tersedia!")
+
+else:
+    print("Login Gagal")
+                
+                
+
+
+
+        
